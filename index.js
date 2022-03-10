@@ -12,12 +12,6 @@ mongoose.connect('mongodb+srv://admin:breederDAO-betest3722@breederdao-betest.7i
     .then( () => console.log("connected to DB."))
     .catch( err => console.log(err));
 
-const beasts = [
-    {
-      id: '1',
-    }
-  ];
-
 const resolvers = {
     Query: {
         beasts: async() => {
