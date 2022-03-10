@@ -12,20 +12,19 @@ mongoose.connect('mongodb+srv://admin:breederDAO-betest3722@breederdao-betest.7i
     .then( () => console.log("connected to DB."))
     .catch( err => console.log(err));
 
+const CLASSES = [
+    'Beast',
+    'Aquatic',
+    'Plant',
+    'Bird',
+    'Bug',
+    'Reptile',
+    'Mech',
+    'Dawn',
+    'Dusk'
+]
 const resolvers = {
-    Query: {
-        beasts: async() => {
-            return await AxieModels.Beast.find({});
-        },
-        aquatics: () => aquatics,
-        plants: () => plants,
-        birds: () => birds,
-        bugs: () => bugs,
-        reptiles: () => reptiles,
-        mechs: () => mechs,
-        dawns: () => dawns,
-        dusks: () => dusks
-    },
+    Query: {},
     Mutation: {
         async syncAxies(_) {
             const db = mongoose.connection.db;
@@ -83,6 +82,10 @@ const resolvers = {
         }
     }
   };
+
+CLASSES.forEach((CLASS) => {
+    resolvers.Query[`${CLASS.toLowerCase()}s`] = () => await AxieModels[CLASS].find({});
+});
 
   // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
