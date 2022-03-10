@@ -1,0 +1,23 @@
+type Class {
+    id: String
+    name: String
+    stage: String
+    class: String
+    price: Float
+}
+
+type Query {
+    beasts: [Class]
+    aquatics: [Class]
+    plants: [Class]
+    birds: [Class]
+    bugs: [Class]
+    reptiles: [Class]
+    mechs: [Class]
+    dawns: [Class]
+    dusks: [Class]
+}
+
+type Mutation {
+    syncAxies: Boolean
+}
