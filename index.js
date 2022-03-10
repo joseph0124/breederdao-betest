@@ -84,7 +84,7 @@ const resolvers = {
   };
 
 CLASSES.forEach((CLASS) => {
-    resolvers.Query[`${CLASS.toLowerCase()}s`] = () => await AxieModels[CLASS].find({});
+    resolvers.Query[`${CLASS.toLowerCase()}s`] = async() => await AxieModels[CLASS].find({});
 });
 
   // The ApolloServer constructor requires two parameters: your schema
